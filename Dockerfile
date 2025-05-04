@@ -76,7 +76,11 @@ RUN curl -fsSL -o /image/Log4jPatcher.jar https://github.com/CreeperHost/Log4jPa
 
 RUN dos2unix /start* /auto/*
 
-ENTRYPOINT [ "/start" ]
+COPY --chmod=755 backup.sh /backup.sh
+
+#ENTRYPOINT [ "/start" ]
+CMD ["/backup.sh"]
+
 HEALTHCHECK --start-period=2m --retries=2 --interval=30s CMD mc-health
 
 ARG BUILDTIME=local
