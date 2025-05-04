@@ -1,6 +1,8 @@
 ARG BASE_IMAGE=eclipse-temurin:21-jre
 FROM ${BASE_IMAGE}
 
+RUN apt-get update && apt-get install -y zip
+
 # hook into docker BuildKit --platform support
 # see https://docs.docker.com/engine/reference/builder/#automatic-platform-args-in-the-global-scope
 ARG TARGETOS
