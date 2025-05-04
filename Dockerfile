@@ -82,7 +82,6 @@ COPY --chmod=755 backup.sh /backup.sh
 
 #ENTRYPOINT [ "/start" ]
 CMD ["/backup.sh"]
-CMD find /data -maxdepth 2 -type d
 
 HEALTHCHECK --start-period=2m --retries=2 --interval=30s CMD mc-health
 
