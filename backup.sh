@@ -1,18 +1,17 @@
 #!/bin/bash
 set -e
 
-# 📁 Co a kam
 DATA_PATH="/data"
 ZIP_NAME="full-volume-$(date +%F).zip"
 TMP_ZIP="/tmp/$ZIP_NAME"
 
-# 📦 Vytvoříme ZIP celé složky /data
+# 📦 Zazipujeme celý objem
 cd "$DATA_PATH"
 zip -r "$TMP_ZIP" .
 
-# ☁️ Nahrajeme na transfer.sh
-echo "Uploading $ZIP_NAME to transfer.sh..."
-UPLOAD_URL=$(curl --upload-file "$TMP_ZIP" https://transfer.sh/$ZIP_NAME)
+# ☁️ Nahrajeme na 0x0.st
+echo "Uploading $ZIP_NAME to 0x0.st..."
+UPLOAD_URL=$(curl -s -F "file=@$TMP_ZIP" https://0x0.st)
 
-echo "✅ Upload completed:"
+echo "✅ Upload complete:"
 echo "$UPLOAD_URL"
