@@ -83,3 +83,4 @@ ARG BUILDTIME=local
 ARG VERSION=local
 ARG REVISION=local
 RUN echo "buildtime=${BUILDTIME}\nversion=${VERSION}\nrevision=${REVISION}" > /etc/image.properties
+CMD ls -la /data && echo "---" && ls -la /data/world && sleep 300
